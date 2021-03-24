@@ -48,3 +48,20 @@ p <- ggboxplot(iris, x = "Sepal.Length", y = "Sepal.Width",
                add = "jitter", shape = "Species")
 p
 
+### Scatter
+
+ggplot(dados_peixe2, aes(x=Mouth_width, y=DID, shape=Species, size=Eye, color=Year)) + 
+  geom_point() 
+
+### Bolhas
+
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(viridis)
+dados_peixe2 %>% arrange(desc(Mouth_length)) %>%
+  ggplot( aes(x=Mouth_width, y=Snout, size = Mouth_length, color = Mouth_position)) +
+  geom_point(alpha=0.4) +
+  scale_size(range = c(1, 15)) +
+  scale_color_viridis(discrete=TRUE, guide=FALSE) +
+  theme(legend.position="none")

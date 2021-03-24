@@ -4,7 +4,7 @@ nsfishes
 
 
 # Visualização dos dados:
-panel(nsfishes, col="grey")
+panel(nsfishes, col="green")
 
 
 # Transformando os dados
@@ -12,27 +12,28 @@ fish_out <- nsfishes %>% coo_slide(ldk = 3) %>% fgProcrustes()
 stack(fish_out) 
 
 ## Captura da forma
-osc <- coo_oscillo(fish_out[17], "efourier")
-calibrate_reconstructions_efourier(fish_out, id = 17, 
-                                   range = c(1, 2, 4, 8, 14, 20))
+osc <- coo_oscillo(fish_out[1], "efourier")
+calibrate_reconstructions_efourier(fish_out, id = 1,range = c(1, 2, 4, 8, 14, 20))
 
 
 # seleção das harmonicas
-hpow <- calibrate_harmonicpower_efourier(fish_out, nb.h=30)
-print(hpow$minh)
+hpow <- calibrate_harmonicpower_efourier(fish_out, nb.h=20)
+hpow$minh
 boxplot(hpow$q)
 
 ## Obtenção das elipticas
-fish_efa <- efourier(fish_out, norm = FALSE, nb.h = 14)
+fish_fourier <- efourier(fish_out, norm = FALSE, nb.h = 13)
 
-str(fish_efa)
-ncol(fish_efa)
+str(fish_fourier)
 fish_efa[,2]
 
 ### PCA
-fish_pca <- PCA(fish_efa)
-plot(fish_pca)
+fish_pca <- PCA(fish_fourier)
 
 # Contribuição das variáveis
 PCcontrib(fish_pca,nax = 1:3)
+
+## Grafico final
+plot(fish_pca)
+
 

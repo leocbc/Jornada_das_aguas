@@ -4,7 +4,7 @@ correlacao =
 ## CORRELOGRAMA
 library(GGally)
 # 1
-ggcorr() 
+ggcorr(iris[,1:4], label = TRUE) 
 
 # HEATMAP
 heatmap()
