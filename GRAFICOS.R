@@ -43,9 +43,9 @@ ggplot(dados_peixe2, aes(x=Mouth_width, y=Mouth_length) ) +
 ### Boxplot
 install.packages("ggpubr")
 library(ggpubr)
-p <- ggboxplot(iris, x = "Sepal.Length", y = "Sepal.Width",
-               color = "Species", palette =c("#00AFBB", "#E7B800","#FC4E07"),
-               add = "jitter", shape = "Species")
+p <- ggboxplot(dados_iris, x = "sepal_length", y = "sepal_width",
+               color = "species", palette =c("#00AFBB", "#E7B800","#FC4E07"),
+               add = "jitter", shape = "species")
 p
 
 ### Scatter
@@ -59,8 +59,9 @@ library(ggplot2)
 library(dplyr)
 library(plotly)
 library(viridis)
+
 dados_peixe2 %>% arrange(desc(Mouth_length)) %>%
-  ggplot( aes(x=Mouth_width, y=Snout, size = Mouth_length, color = Mouth_position)) +
+  ggplot( aes(x=Mouth_width, y=Snout, size = Mouth_length, color = Eye)) +
   geom_point(alpha=0.4) +
   scale_size(range = c(1, 15)) +
   scale_color_viridis(discrete=TRUE, guide=FALSE) +

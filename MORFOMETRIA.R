@@ -1,4 +1,5 @@
 library(Momocs)
+
 load("nsfishes.Rdata")
 nsfishes
 
@@ -12,7 +13,7 @@ fish_out <- nsfishes %>% coo_slide(ldk = 3) %>% fgProcrustes()
 stack(fish_out) 
 
 ## Captura da forma
-osc <- coo_oscillo(fish_out[1], "efourier")
+osc <- coo_oscillo(fish_out[20], "efourier")
 calibrate_reconstructions_efourier(fish_out, id = 1,range = c(1, 2, 4, 8, 14, 20))
 
 

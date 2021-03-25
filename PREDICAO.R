@@ -3,25 +3,22 @@
 
 library(MASS)
 
-dados <- iris   
-names(dados)
-
-fit <- lda(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,          
-           data = dados)
+fit <- lda(species ~ sepal_length + sepal_width + petal_length + petal_width,          
+           data = dados_iris)
 names(fit)
 
-fitclass <- predict(fit, dados)
+fitclass <- predict(fit, dados_iris)
 fitclass = fitclass$class
 
 
-tabela2 <- xtabs(~ fitclass + Species, data = dados)
+tabela2 <- xtabs(~ fitclass + species, data = dados_iris)
 tabela2
 
 coef(fit)
-FD <- as.matrix(dados[, -5]) %*% coef(fit)
+FD <- as.matrix(dados_iris[, -5]) %*% coef(fit)
 dim(FD)
 
-cores <- rainbow(length(levels(dados[, "Species"]))) 
-plot(FD[, 1], FD[, 2], pch = 20, col = cores[dados$Species],     
+cores <- rainbow(length(levels(dados_iris[, "species"]))) 
+plot(FD[, 1], FD[, 2], pch = 20, col = cores[dados_iris$species],     
      xlab = "Função discriminante 1", 
      ylab = "Função discriminante 2")

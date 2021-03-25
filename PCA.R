@@ -42,13 +42,14 @@ fviz_pca_biplot(pca_iris,
 
 ## pca 3D
 ## iris
-tratamentos = iris$Species
+Especies = iris$Species
 
 library(pca3d)
 
 pca3d(pca_iris, 
-      group = tratamentos,
+      group = Especies,
       show.ellipses=TRUE,
       ellipse.ci=0.75)
 
-princomp(dados_peixe2[,10:ncol(dados_peixe2)])
+pca_peixe1 = prcomp(dados_peixe1, scale= TRUE)
+summary(pca_peixe1)

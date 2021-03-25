@@ -1,10 +1,11 @@
 ### CORRELAÇÃO
 
-correlacao = 
+correlacao = cor(dados_iris[,1:4]) 
+  
 ## CORRELOGRAMA
 library(GGally)
 # 1
-ggcorr(iris[,1:4], label = TRUE) 
+ggcorr(dados_peixe1, label = TRUE) 
 
 # HEATMAP
 heatmap()
